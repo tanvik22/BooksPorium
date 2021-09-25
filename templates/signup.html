@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<head>
+	<title>SIGN UP</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        .signup{
+            text-align: center;
+            width:99%;
+        }
+        #s{
+            margin:2%;
+            font-size:1.5rem;
+        }
+        #s img{
+            width:100%;
+            height:108%
+            align:bottom;
+            margin: 30% 0;
+        }
+        .loginHeader{
+            text-align:center;
+            font-size:3rem;
+            opacity: 0.8;
+        }
+
+
+
+
+    </style>
+</head>
+
+<div class='row' id="s">
+
+    <div class=' col-md-4'>
+        <img src="static/su1.png">
+    </div>
+    <div  class="signup col-md-4" >
+<form method="post">
+{% csrf_token %}
+<h2 class="mb-3 loginHeader">Sign Up</h2>
+    {% for field in form %}
+        <p class="mb-3">
+        {{ field.label_tag }}<br>
+        {{ field }}
+        <!--        {% if field.help_text %}-->
+        <!--          <small style="color: grey">{{ field.help_text }}</small>-->
+        {% endif %}
+        {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        </p>
+    {% endfor %}
+<br><button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in"></i> Sign up</button><br>
+</div>
+</form>
+    <div class='col-md-4'>
+        <img src="static/su2.png">
+    </div>
+</div>
+{% endblock %}

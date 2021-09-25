@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+        integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--        <link href="signin.css" rel="stylesheet">-->
+    <style>
+        .loginHeader{
+            text-align:center;
+            font-size:3rem;
+            opacity: 0.8;
+        }
+
+        #s1{
+            background-size: cover;
+            background: #fff url("../images/s3.png") no-repeat center;
+            margin:20px 0;
+        }
+
+        #s2 {
+            padding: 5% 35%;
+        }
+
+        #faclink a{
+        color:#000;
+        }
+
+        #faclink a:hover{
+        color: #1778D4 !important;;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<div id="s1" >
+    <div class="row" id="s2">
+    <form class="form-signin" method="post" action="login.html" >
+            {% csrf_token %}
+        <p class="mb-3 loginHeader">Sign In</p>
+        <br>
+        <div class="form-group">
+        <label for="inputEmail" class="sr-only">Username</label>
+        <div class="input-group">
+<!--        <div class="input-group-addon">-->
+<!--	        <i class="fa fa-user"></i>-->
+<!--        </div>-->
+        <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username"
+               required>
+            </div>
+        </div>
+        <br>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <div class="input-group">
+<!--        <div class="input-group-addon">-->
+<!--	        <i class="fa fa-key form-control-feedback"></i>-->
+<!--        </div>-->
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <br>
+        <div class="checkbox mb-3" id="faclink">
+            <label>
+                 <p> Are you a Seller? <a href="login_seller.html"> Sign in for Seller</a> </p>
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in"></i> Sign in</button>
+    </form>
+        </div>
+    </div>
+<br>
+</body>
+</html>
+
+{% endblock body %}
