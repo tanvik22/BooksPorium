@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MEDIA_ROOT = 'static'
+# MEDIA_URL = 'media/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

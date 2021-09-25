@@ -11,7 +11,7 @@
     <style>
         #upload{
             background-size: cover;
-            background: #fff url("/static/s10.png") no-repeat center;
+            background: #fff url("../images/s10.png") no-repeat center;
              background-position: 45% 27%;
             /*margin:20px 0;*/
             padding: 5% 35%;
@@ -36,17 +36,21 @@
     </style>
 </head>
 <div id="upload">
-<form method="post" action="/upload_file.html" enctype="multipart/form-data">
+<form method="post" action="/upload_book.html" enctype="multipart/form-data">
     {% csrf_token %}
     <p class="mb-3 loginHeader">Upload Here</p>
     <br>
-    <label >Topic Name :</label>
-    <input type="text" placeholder="Topic name " class="form-control transparent-input"  name="topic_name" required>
+    <label >Book Name :</label>
+    <input type="text" placeholder="Book name " class="form-control transparent-input"  name="book_name" required>
     <br><br>
 
 
-    <label >Notes : </label>
-    <input class="form-control transparent-input" type="file" name="notes_file" required>
+    <label >Book Picture : </label>
+    <input class="form-control transparent-input" type="file" name="book_file" required>
+    <br><br>
+
+     <label >Book Price : </label>
+    <input type="text" placeholder="Book Price " class="form-control transparent-input" name="book_price" required>
     <br><br>
 
     <button type="submit" class="button" id="back">Upload</button> <br><br>

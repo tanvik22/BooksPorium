@@ -2,7 +2,7 @@
 from django.contrib import auth, messages
 from django.db import models
 from django.views.generic.list import ListView
-from .models import Contact
+from .models import Contact,Upload_Books
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
@@ -58,4 +58,19 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+def upload_book(request):
+    files = Upload_Books.objects.all()
+    if request.method == "POST":
+        book_name = request.POST.get('book_name')
+        # video_file = request.FILES.get('video_file')
+        book_file = request.FILES.get('book_file')
+        book_price = request.POST.get('book_price')
+
+        file = Upload_Books.objects.create(book_name=book_name, book_file=book_file,book_price=book_price)
+
+        file.save()
+        return redirect('login.html')
+
+    return render(request, 'upload_book.html', {"files": files})
 

@@ -12,3 +12,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=300, default='')
     desc = models.CharField(max_length=300, default='')
 
+class Upload_Books(models.Model):
+    book_name = models.CharField(max_length=200)
+    book_file = models.FileField(upload_to="Material/")
+    book_price = models.CharField(max_length=200,default='')
