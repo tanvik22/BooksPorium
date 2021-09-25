@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<head>
+    <title>SIGN UP</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #upload{
+            background-size: cover;
+            background: #fff url("/static/s10.png") no-repeat center;
+             background-position: 45% 27%;
+            /*margin:20px 0;*/
+            padding: 5% 35%;
+            margin-bottom: 5%;
+        }
+        #upload label{
+            font-size:1.5rem;
+        }
+        .loginHeader{
+            text-align:center;
+            font-size:3rem;
+            opacity: 0.8;
+            padding-top:8%;
+        }
+        #back{
+		padding:10px;
+		width:100%;
+		background:#263238;
+		color:#fff;
+	    }
+
+    </style>
+</head>
+<div id="upload">
+<form method="post" action="/upload_file.html" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p class="mb-3 loginHeader">Upload Here</p>
+    <br>
+    <label >Topic Name :</label>
+    <input type="text" placeholder="Topic name " class="form-control transparent-input"  name="topic_name" required>
+    <br><br>
+
+
+    <label >Notes : </label>
+    <input class="form-control transparent-input" type="file" name="notes_file" required>
+    <br><br>
+
+    <button type="submit" class="button" id="back">Upload</button> <br><br>
+</form>
+<a href="catalog_faculty.html"><button type="submit" class="btn"  id="back">Back</button></a>
+</div>
+{% endblock%}
