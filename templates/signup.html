@@ -1,66 +1,185 @@
 {% extends 'base.html' %}
 
+{% block title%} Signup Html {% endblock %}
+
+{%block css%}
+<style>
+  .signup {
+    text-align: center;
+    width: 50%;
+  }
+
+  #s {
+    margin: 2%;
+    font-size: 0.5rem;
+  }
+
+
+  #s img {
+    width: 50%;
+    height: 10%;
+    align-items: bottom;
+    margin: 30% 0;
+  }
+
+  .loginHeader {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+
+
+
+  @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  .container-fluid {
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: "Raleway", sans-serif;
+  }
+
+  .container-fluid:hover .top:before,
+  .container-fluid:hover .top:after,
+  .container-fluid:hover .bottom:before,
+  .container-fluid:hover .bottom:after,
+  .container-fluid:active .top:before,
+  .container-fluid:active .top:after,
+  .container-fluid:active .bottom:before,
+  .container-fluid:active .bottom:after {
+    margin-left: 200px;
+    transform-origin: -200px 50%;
+    transition-delay: 0s;
+  }
+
+  .container-fluid:hover .center,
+  .container-fluid:active .center {
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+
+  .top:before,
+  .top:after,
+  .bottom:before,
+  .bottom:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 200vmax;
+    height: 200vmax;
+    top: 50%;
+    left: 50%;
+    margin-top: -100vmax;
+    transform-origin: 0 50%;
+    transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+    z-index: 10;
+    opacity: 0.65;
+    transition-delay: 0.2s;
+  }
+
+  .top:before {
+    transform: rotate(51deg);
+    background: #e46569;
+  }
+
+  .top:after {
+    transform: rotate(129deg);
+    background: #ecaf81;
+  }
+
+  .bottom:before {
+    transform: rotate(-51deg);
+    background: #60b8d4;
+  }
+
+  .bottom:after {
+    transform: rotate(-129deg);
+    background: #3745b5;
+  }
+
+  .center {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+    transition-delay: 0s;
+    color: #333;
+  }
+
+  .center label {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  .center button {
+    width: 25%;
+    height: 15%;
+    font-size: 0.8rem;
+    align-items: center;
+  }
+
+  .center input {
+    width: 130%;
+    height: 55%;
+    font-family: inherit;
+  }
+</style>
+{% endblock css %}
+
+
 {% block body %}
-<head>
-	<title>SIGN UP</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-
-        .signup{
-            text-align: center;
-            width:99%;
-        }
-        #s{
-            margin:2%;
-            font-size:1.5rem;
-        }
-        #s img{
-            width:100%;
-            height:108%
-            align:bottom;
-            margin: 30% 0;
-        }
-        .loginHeader{
-            text-align:center;
-            font-size:3rem;
-            opacity: 0.8;
-        }
 
 
+<div class="container-fluid" onclick="onclick">
 
 
-    </style>
-</head>
+  <div class='row' id="s">
 
-<div class='row' id="s">
+    <form method="post">
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="center">
 
-    <div class=' col-md-4'>
-        <img src="static/su1.png">
-    </div>
-    <div  class="signup col-md-4" >
-<form method="post">
-{% csrf_token %}
-<h2 class="mb-3 loginHeader">Sign Up</h2>
-    {% for field in form %}
+        {% csrf_token %}
+        <h2 class="mb-3 loginHeader">Sign Up</h2>
+        {% for field in form %}
         <p class="mb-3">
-        {{ field.label_tag }}<br>
-        {{ field }}
-        <!--        {% if field.help_text %}-->
-        <!--          <small style="color: grey">{{ field.help_text }}</small>-->
-        {% endif %}
-        {% for error in field.errors %}
+          {{ field.label_tag }}<br>
+          {{ field }}
+          <!--        {% if field.help_text %}-->
+          <!--          <small style="color: grey">{{ field.help_text }}</small>-->
+          {% endif %}
+          {% for error in field.errors %}
         <p style="color: red">{{ error }}</p>
         {% endfor %}
         </p>
-    {% endfor %}
-<br><button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in"></i> Sign up</button><br>
+        {% endfor %}
+        <br><button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in"></i> Sign up</button><br>
+      </div>
+    </form>
+  </div>
+  </form>
 </div>
-</form>
-    <div class='col-md-4'>
-        <img src="static/su2.png">
-    </div>
-</div>
+
+
 {% endblock %}

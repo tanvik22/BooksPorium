@@ -1,29 +1,34 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%} {% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/footerStyle.css' %}">
 
 
 
 
+  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+  {% block css %} {% endblock css %}
 
-
-<!--    <link rel="stylesheet" href="assets/css/style.css">-->
-    <style>
-
-    </style>
 </head>
 
-<body>
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="/">Books Porium</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,111 +39,36 @@
         <li class="nav-item">
           <a class="nav-link" href="contactus">Contact Us</a>
         </li>
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link"> Hello, {{user.username}}</a></li>
-            <li class="nav-item">
-            <a class="nav-link" href="logout">Logout</a>
-          </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link"> Hello, {{user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout">Logout</a>
+        </li>
 
-            {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="signup.html">Sign Up</a>
-          </li>
-            {% endif %}
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signup.html">Sign Up</a>
+        </li>
+        {% endif %}
 
-      <form class="d-flex" style="align:left;">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+        <form class="d-flex" style="align-items :left;">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
     </div>
   </div>
 </nav>
- {% block body %}
-    {% endblock body %}
 
 
-<!-- <meta charset="utf-8">-->
-<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">-->
-<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>-->
-<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>-->
-<!--  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900" rel="stylesheet">-->
-<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
-<!--  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">-->
+{% block body %}
+{% endblock body %}
 
-<!--  <link rel="stylesheet" href= "{% static '../css/footerStyle.css' %}">-->
+{%block footer%}
+{% endblock footer%}
 
-<!--<body>-->
-<!--<footer class="container-fluid bg-grey py-5">-->
-<!--<div class="container">-->
-<!--   <div class="row">-->
-<!--      <div class="col-md-6">-->
-<!--         <div class="row">-->
-<!--            <div class="col-md-6 ">-->
-<!--               <div class="logo-part">-->
-<!--                  <h2>Books Porium</h2>-->
-<!--                  <address><span>-->
-<!--                    Address :-->
-<!--                    <p>Thadomal Shahani Engineering College<br>-->
-<!--                    P. G. Kher Marg, (32nd Road), TPS-III,<br>-->
-<!--                    Off Linking Road ,<br>-->
-<!--                    Bandra (W),<br>-->
-<!--                    Mumbai - 400050<br>-->
-<!--                    Maharashtra</p></span>-->
-<!--                  </address>-->
-<!--               </div>-->
-<!--            </div>-->
-<!--            <div class="col-md-6 px-4">-->
-<!--               <h6> About Company</h6>-->
-<!--               <p>But horizontal lines can only be a full pixel high.</p>-->
-<!--               <a href="#" class="btn-footer"> More Info </a><br>-->
-<!--               <a href="#" class="btn-footer"> Contact Us</a>-->
-<!--            </div>-->
-<!--         </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-6">-->
-<!--         <div class="row">-->
-<!--            <div class="col-md-6 px-4">-->
-<!--               <h6> Help us</h6>-->
-<!--               <div class="row ">-->
-<!--                  <div class="col-md-6">-->
-<!--                     <ul>-->
-<!--                        <li> <a href="/"> Home</a> </li>-->
-<!--                        <li> <a href="aboutus"> About</a> </li>-->
-<!--                        <li> <a href="contactus"> Contact</a> </li>-->
-<!--                     </ul>-->
-<!--                  </div>-->
-<!--                  <div class="col-md-6 px-4">-->
-<!--                     <ul>-->
-<!--                        <li> <a href="#"> Terms</a> </li>-->
-<!--                        <li> <a href="#"> Policy</a> </li>-->
-<!--                        <li> <a href="#"> Refunds</a> </li>-->
-<!--                     </ul>-->
-<!--                  </div>-->
-<!--               </div>-->
-<!--            </div>-->
-<!--            <div class="col-md-6 ">-->
-<!--               <h6> Newsletter</h6>-->
-<!--               <div class="social">-->
-<!--                  <a href="aboutus.html"><i class="fa fa-facebook" aria-hidden="true"></i></a>-->
-<!--                  <a href="Contactus.html"><i class="fa fa-instagram" aria-hidden="true"></i></a>-->
-<!--               </div>-->
-<!--               <form class="form-footer my-3">-->
-<!--                  <input type="text"  placeholder="Enter your email....." name="search">-->
-<!--                  <input type="button" value="Go" >-->
-<!--               </form>-->
-<!--               <p class="copyright-text">&copy; 2017 All Rights Reserved by-->
-<!--         <a href="index.html" style="color: White;">Destiny</a>.-->
-<!--            </div>-->
-<!--         </div>-->
-<!--      </div>-->
-<!--   </div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</body>-->
 </html>
