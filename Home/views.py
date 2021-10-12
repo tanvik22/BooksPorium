@@ -74,3 +74,7 @@ def upload_book(request):
 
     return render(request, 'upload_book.html', {"files": files})
 
+def catalog(request):
+    all_Materials = Upload_Books.objects.all()
+    return render(request, 'catalog.html', {"Materials": all_Materials})
+

@@ -7,10 +7,13 @@
 
 {% block title%} Login html {% endblock %}
 
+
+
 {% block css %}
+
+
 <style>
   @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
-
   *,
   *:before,
   *:after {
@@ -21,6 +24,7 @@
     position: absolute;
     height: 100%;
     overflow: hidden;
+    background-size: cover;
   }
 
   body {
@@ -117,8 +121,10 @@
   }
 
 </style>
+
 {% endblock css %}
 
+<!--{% block header %} {% endblock %}-->
 
 {% block body %}
 <div class="container-fluid" onclick="onclick">
@@ -152,4 +158,6 @@
 
 {% endblock body %}
 
-contactus
+{% block footer %}
+{% endblock footer%}
+

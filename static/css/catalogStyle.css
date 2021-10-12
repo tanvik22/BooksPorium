@@ -1,0 +1,43 @@
+.imgCaption{
+    font-weight: bold;
+    font-size: 120%;
+}
+.heading{
+    margin-top: 2rem;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+#showcase {
+	background:url('/Assets/img/head.jpeg') no-repeat ;
+	background-color:#05386B;
+	background-position: center;
+ 	background-size: cover;
+ 	min-height:400px;
+	padding-top:50px;
+	border-bottom:;
+}
+#showcase h2{
+	margin-top:100px;
+	text-align:center;
+	font-weight: bold;
+	font-size:50px;
+	color:#fff;
+    }
+
+#showcase p{
+	text-align:center;
+	color:#ffffff;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+/* .course{
+    box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),-8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+	align-content: center;
+} */
+/* .button{
+    align-items: center;
+    margin-left: 12rem;
+    margin-bottom: 3rem;
+} */
