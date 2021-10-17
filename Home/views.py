@@ -78,3 +78,7 @@ def catalog(request):
     all_Materials = Upload_Books.objects.all()
     return render(request, 'catalog.html', {"Materials": all_Materials})
 
+
+def checkout(request):
+    return render(request, 'checkout.html')
+
