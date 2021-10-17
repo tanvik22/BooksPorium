@@ -2,7 +2,7 @@
 from django.contrib import auth, messages
 from django.db import models
 from django.views.generic.list import ListView
-from .models import Contact,Upload_Books,Orders
+from .models import Contact,Upload_Books,Orders,Seller
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
@@ -97,3 +97,20 @@ def checkout(request):
         return render(request, 'checkout.html', {'thank':thank, 'id': id})
     return render(request, 'checkout.html')
 
+
+
+def login_seller(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if Seller.objects.filter(username=username, password=password):
+            seller = Seller.objects.get(username=username)
+            seller.save()
+            return redirect('upload_book.html')
+
+        else:
+            messages.info(request, "Invalid Credentials")
+            return redirect('/login_seller.html')
+
+    return render(request, 'login_seller.html')

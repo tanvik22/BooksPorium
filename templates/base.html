@@ -55,7 +55,12 @@
 sagittis lacus vel augue laoreet rutrum faucibus.">
       <img src="../images/cart2.svg" style="width:24px; height:24px;"> (<span id="cart">0</span>)
     </button>
-
+ {% elif Seller.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link"> Hello, {{seller.username}}</a></li>
+            <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="login.html">Login</a>
