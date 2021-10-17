@@ -97,3 +97,7 @@ def checkout(request):
         return render(request, 'checkout.html', {'thank':thank, 'id': id})
     return render(request, 'checkout.html')
 
+def vieworders(request):
+    all_Materials = Orders.objects.all()
+    return render(request, 'vieworders.html', {"Materials": all_Materials})
+    
