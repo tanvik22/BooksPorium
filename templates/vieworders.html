@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title%} vieworders {% endblock %} 
+
+{%block css%}
+
+
+
+<link rel="stylesheet" href="../css/vieworders.css">
+<style>
+#back{
+    padding:10px;
+    align:center;
+    margin-left:31%;
+    width:40%;
+    background:#263238;
+    color:#fff;
+    }
+</style>
+ {%endblock css%}
+
+{% block body %}
+
+<div class="container">
+  <h2> Orders </h2>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Order Id</div>
+      <div class="col col-2">Customer Name</div>
+      <div class="col col-4">Books</div>
+      <div class="col col-4">Address</div>
+      
+    </li>
+    {% for Material in Materials %}
+    <li class="table-row">
+      <div class="col col-1" data-label="Job Id">{{ Material.order_id }}</div>
+      <div class="col col-2" data-label="Customer Name">{{ Material.name }}</div>
+      <div class="col col-3" data-label="Amount">{{ Material.items_json }}</div>
+      <div class="col col-4" data-label="Payment Status">{{ Material.address }}</div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<a href="upload_book.html"><button type="submit" class="btn"  id="back"> Back to Upload </button></a>
+
+{% endblock%}

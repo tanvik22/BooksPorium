@@ -12,4 +12,5 @@ urlpatterns = [
     path('upload_book.html', views.upload_book, name='upload_book'),
     path('checkout', views.checkout,name = 'checkout'),
     path('login_seller.html', views.login_seller,name = 'login_seller'),
+    path('vieworders', views.vieworders,name = 'vieworders'),
 ]

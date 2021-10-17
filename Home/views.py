@@ -114,3 +114,7 @@ def login_seller(request):
             return redirect('/login_seller.html')
 
     return render(request, 'login_seller.html')
+def vieworders(request):
+    all_Materials = Orders.objects.all()
+    return render(request, 'vieworders.html', {"Materials": all_Materials})
+    
