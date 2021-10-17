@@ -27,16 +27,20 @@
     <li class="table-header">
       <div class="col col-1">Order Id</div>
       <div class="col col-2">Customer Name</div>
-      <div class="col col-4">Books</div>
-      <div class="col col-4">Address</div>
+       
+        <div class="col col-4">Phone No.</div>
+      <div class="col col-5">Books</div>
+      <div class="col col-6">Address</div>
       
     </li>
     {% for Material in Materials %}
     <li class="table-row">
       <div class="col col-1" data-label="Job Id">{{ Material.order_id }}</div>
       <div class="col col-2" data-label="Customer Name">{{ Material.name }}</div>
-      <div class="col col-3" data-label="Amount">{{ Material.items_json }}</div>
-      <div class="col col-4" data-label="Payment Status">{{ Material.address }}</div>
+       
+        <div class="col col-4" data-label="Customer Name">{{ Material.phone }}</div>
+      <div class="col col-5" data-label="Amount">{{ Material.items_json }}</div>
+      <div class="col col-6" data-label="Payment Status">{{ Material.address }}</div>
     </li>
     {% endfor %}
   </ul>
