@@ -2,7 +2,7 @@
 from django.contrib import auth, messages
 from django.db import models
 from django.views.generic.list import ListView
-from .models import Contact,Upload_Books
+from .models import Contact,Upload_Books,Orders
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
@@ -80,5 +80,20 @@ def catalog(request):
 
 
 def checkout(request):
+    if request.method=="POST":
+        items_json = request.POST.get('itemsJson', '')
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        address = request.POST.get('address1', '') + " " + request.POST.get('address2', '')
+        city = request.POST.get('city', '')
+        state = request.POST.get('state', '')
+        zip_code = request.POST.get('zip_code', '')
+        phone = request.POST.get('phone', '')
+        order = Orders(items_json=items_json, name=name, email=email, address=address, city=city,
+                       state=state, zip_code=zip_code, phone=phone)
+        order.save()
+        thank = True
+        id = order.order_id
+        return render(request, 'checkout.html', {'thank':thank, 'id': id})
     return render(request, 'checkout.html')
 
