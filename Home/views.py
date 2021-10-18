@@ -70,7 +70,7 @@ def upload_book(request):
         file = Upload_Books.objects.create(book_name=book_name, book_file=book_file,book_price=book_price)
 
         file.save()
-        return redirect('login.html')
+        return redirect('upload_book.html')
 
     return render(request, 'upload_book.html', {"files": files})
 

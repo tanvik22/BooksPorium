@@ -1,137 +1,161 @@
 {% extends 'base.html' %}
 
-{% block body %}
+
+
+{% block title %} Login Seller {% endblock %}
 
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <!--<link rel="stylesheet" href="../css/login.css">-->
+{% block body %}
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+  <meta charset="UTF-8">
 
-<style>
 
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
-*, *:before, *:after {
-  box-sizing: border-box;
-}
+  {%block css%}
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
 
-.container-fluid{
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
 
-  position: absolute;
-  height: 100%;
-  overflow: hidden;
-}
+    .container-fluid {
 
-body {
-  min-height: 100vh;
-  font-family: "Raleway", sans-serif;
-}
+      position: absolute;
+      height: 100%;
+      overflow: hidden;
+    }
 
-.container-fluid:hover .top:before, .container-fluid:hover .top:after, .container-fluid:hover .bottom:before, .container-fluid:hover .bottom:after, .container-fluid:active .top:before, .container-fluid:active .top:after, .container-fluid:active .bottom:before, .container-fluid:active .bottom:after {
-  margin-left: 200px;
-  transform-origin: -200px 50%;
-  transition-delay: 0s;
-}
-.container-fluid:hover .center, .container-fluid:active .center {
-  opacity: 1;
-  transition-delay: 0.2s;
-}
+    body {
+      min-height: 100vh;
+      font-family: "Raleway", sans-serif;
+    }
 
-.top:before, .top:after, .bottom:before, .bottom:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 200vmax;
-  height: 200vmax;
-  top: 50%;
-  left: 50%;
-  margin-top: -100vmax;
-  transform-origin: 0 50%;
-  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
-  z-index: 10;
-  opacity: 0.65;
-  transition-delay: 0.2s;
-}
+    .container-fluid:hover .top:before,
+    .container-fluid:hover .top:after,
+    .container-fluid:hover .bottom:before,
+    .container-fluid:hover .bottom:after,
+    .container-fluid:active .top:before,
+    .container-fluid:active .top:after,
+    .container-fluid:active .bottom:before,
+    .container-fluid:active .bottom:after {
+      margin-left: 200px;
+      transform-origin: -200px 50%;
+      transition-delay: 0s;
+    }
 
-.top:before {
-  transform: rotate(45deg);
-  background: #e46569;
-}
-.top:after {
-  transform: rotate(135deg);
-  background: #ecaf81;
-}
+    .container-fluid:hover .center,
+    .container-fluid:active .center {
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
 
-.bottom:before {
-  transform: rotate(-45deg);
-  background: #60b8d4;
-}
-.bottom:after {
-  transform: rotate(-135deg);
-  background: #3745b5;
-}
+    .top:before,
+    .top:after,
+    .bottom:before,
+    .bottom:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 200vmax;
+      height: 200vmax;
+      top: 50%;
+      left: 50%;
+      margin-top: -100vmax;
+      transform-origin: 0 50%;
+      transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+      z-index: 10;
+      opacity: 0.65;
+      transition-delay: 0.2s;
+    }
 
-.center {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  top: 50%;
-  left: 50%;
-  margin-left: -200px;
-  margin-top: -200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
-  transition-delay: 0s;
-  color: #333;
-}
-.center input {
-  width: 100%;
-  padding: 15px;
-  margin: 5px;
-  border-radius: 1px;
-  border: 1px solid #ccc;
-  font-family: inherit;
-}
-</style>
+    .top:before {
+      transform: rotate(45deg);
+      background: #e46569;
+    }
+
+    .top:after {
+      transform: rotate(135deg);
+      background: #ecaf81;
+    }
+
+    .bottom:before {
+      transform: rotate(-45deg);
+      background: #60b8d4;
+    }
+
+    .bottom:after {
+      transform: rotate(-135deg);
+      background: #3745b5;
+    }
+
+    .center {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      top: 50%;
+      left: 50%;
+      margin-left: -200px;
+      margin-top: -200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+      transition-delay: 0s;
+      color: #333;
+    }
+
+    .center input {
+      width: 100%;
+      padding: 15px;
+      margin: 5px;
+      border-radius: 1px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+    }
+  </style>
+  {% endblock %}
 </head>
+
 <body>
 
-<div class="container-fluid" onclick="onclick" >
-    <form class="form-signin" method="post" action="login_seller.html" >
-{% csrf_token %}
-  <div class="top"></div>
-  <div class="bottom"></div>
-  <div class="center">
-    <h2>Please Sign In</h2>
-    <div class="form-group">
-      <label for="inputEmail" class="sr-only">Username</label>
-      <div class="input-group">
+  <div class="container-fluid" onclick="onclick">
+    <form class="form-signin" method="post" action="login_seller.html">
+      {% csrf_token %}
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="center">
+        <h2>Please Sign In</h2>
+        <div class="form-group">
+          <label for="inputEmail" class="sr-only">Username</label>
+          <div class="input-group">
 
-    <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username"
-               required>
-        </div>
-      <label for="inputPassword" class="sr-only">Password</label>
-        <div class="input-group">
-    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    </div>
+            <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required>
+          </div>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <div class="input-group">
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+              required>
+          </div>
 
-        <div class="checkbox mb-3" id="faclink">
+          <div class="checkbox mb-3" id="faclink">
             <label>
-                 <p> Are you a Buyer? <a href="login.html"> Sign in for Buyer</a> </p>
+              <p> Are you a Buyer? <a href="login.html"> Sign in for Buyer</a> </p>
             </label>
-        </div>
+          </div>
 
-      <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in"></i> Sign in</button>
-  </form>
+          <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in"></i> Sign in</button>
+    </form>
   </div>
-</div>
+  </div>
 </body>
+
 </html>
 
 {% endblock body %}

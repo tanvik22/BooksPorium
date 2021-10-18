@@ -8,20 +8,19 @@
     font-weight: bold;
 }
 #showcase {
-	background:url('/Assets/img/head.jpeg') no-repeat ;
+	background:url('../images/carousel6.jpeg') no-repeat ;
 	background-color:#05386B;
 	background-position: center;
  	background-size: cover;
- 	min-height:400px;
+ 	min-height:550px;
 	padding-top:50px;
-	border-bottom:;
 }
 #showcase h2{
-	margin-top:100px;
+	margin-top:170px;
 	text-align:center;
 	font-weight: bold;
 	font-size:50px;
-	color:#fff;
+	color:black;
     }
 
 #showcase p{
