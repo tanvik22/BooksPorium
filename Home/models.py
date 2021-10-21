@@ -18,8 +18,9 @@ class Contact(models.Model):
 class Upload_Books(models.Model):     
     # book_id = models.AutoField(primary_key=True)
     book_name = models.CharField(max_length=200)
-    book_file = models.FileField(upload_to="Material/")
+    book_file = models.FileField(upload_to="Material/", default="")
     book_price = models.CharField(max_length=200,default='')
+    category = models.CharField(max_length=50, default="")
 
     def __str__(self):
              return self.book_name

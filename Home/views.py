@@ -1,4 +1,3 @@
-
 from django.contrib import auth, messages
 from django.db import models
 from django.views.generic.list import ListView
@@ -11,6 +10,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 import os
+from math import ceil
 
 # Create your views here.
 def index(request):
@@ -66,8 +66,9 @@ def upload_book(request):
         # video_file = request.FILES.get('video_file')
         book_file = request.FILES.get('book_file')
         book_price = request.POST.get('book_price')
+        category = request.POST.get('category')
 
-        file = Upload_Books.objects.create(book_name=book_name, book_file=book_file,book_price=book_price)
+        file = Upload_Books.objects.create(book_name=book_name, book_file=book_file,book_price=book_price,category=category)
 
         file.save()
         return redirect('upload_book.html')
@@ -75,8 +76,18 @@ def upload_book(request):
     return render(request, 'upload_book.html', {"files": files})
 
 def catalog(request):
-    all_Materials = Upload_Books.objects.all()
-    return render(request, 'catalog.html', {"Materials": all_Materials})
+    allProds=[]
+    catprods = Upload_Books.objects.values_list('category',flat=True).distinct()
+    cats= list(catprods)
+
+    params={'allProds':allProds}
+    for cat in cats:
+        prod = Upload_Books.objects.filter(category=cat)
+        n = prod.count()
+        nSlides = n//4 + ceil((n/4)-(n//4))
+        allProds.append([prod, range(1,nSlides), nSlides])
+
+    return render(request, 'catalog.html', params)
 
 
 def checkout(request):
